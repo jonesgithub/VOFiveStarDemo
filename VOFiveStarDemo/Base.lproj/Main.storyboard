@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,10 +17,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pib-tr-61x" customClass="VOScoreView">
+                                <rect key="frame" x="250" y="290" width="100" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="CKf-9x-kTt"/>
+                                    <constraint firstAttribute="width" secondItem="pib-tr-61x" secondAttribute="height" multiplier="5:1" id="dSi-Cp-J4v"/>
+                                </constraints>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="MC5-4I-PrW">
+                                <rect key="frame" x="14" y="330" width="572" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Yae-fK-O8l"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeScore:" destination="BYZ-38-t0r" eventType="valueChanged" id="lSN-Pv-lub"/>
+                                </connections>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="pib-tr-61x" secondAttribute="centerY" id="73j-74-Qii"/>
+                            <constraint firstItem="MC5-4I-PrW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="7fu-Z7-QA5"/>
+                            <constraint firstItem="MC5-4I-PrW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="P5o-p6-fTm"/>
+                            <constraint firstItem="MC5-4I-PrW" firstAttribute="top" secondItem="pib-tr-61x" secondAttribute="bottom" constant="20" id="Pdi-wt-oUa"/>
+                            <constraint firstAttribute="centerX" secondItem="pib-tr-61x" secondAttribute="centerX" id="lbA-tT-deO"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="RkT-n2-qmf" appends="YES" id="yF5-kA-ixb"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="scoreSlider" destination="MC5-4I-PrW" id="F24-ZY-yby"/>
+                        <outlet property="scoreView" destination="pib-tr-61x" id="P3F-5o-Lye"/>
+                        <outlet property="starSizeConstraint" destination="CKf-9x-kTt" id="2tG-jb-SqB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="RkT-n2-qmf">
+                    <connections>
+                        <action selector="tap:" destination="BYZ-38-t0r" id="LVm-Gf-yEw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
